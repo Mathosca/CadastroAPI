@@ -2,48 +2,48 @@ package dev.matheus.CadastroAPIJava10x;
 
 import jakarta.persistence.*;
 
-@Entity  //@Entity transforma a classe em uma entidade do DB
+@Entity  //@Entity transforms a class into a DB entity
 @Table(name = "tb_cadastro")
 public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
-    private String email;
-    private int idade;
+    private String name;
+    private String mail;
+    private int age;
 
     public UserModel() {
     }
 
     public UserModel(String nome, String email, int idade) {
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
+        this.name = nome;
+        this.mail = email;
+        this.age = idade;
     }
 
     public String getNome() {
-        return nome;
+        return name;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.name = nome;
     }
 
     public String getEmail() {
-        return email;
+        return mail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.mail = email;
     }
 
     public int getIdade() {
-        return idade;
+        return age;
     }
 
     public void setIdade(int idade) {
-        this.idade = idade;
+        this.age = idade;
     }
 
 }
