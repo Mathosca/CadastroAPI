@@ -1,4 +1,4 @@
-package dev.matheus.CadastroAPIJava10x;
+package dev.matheus.CadastroAPIJava10x.Users;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

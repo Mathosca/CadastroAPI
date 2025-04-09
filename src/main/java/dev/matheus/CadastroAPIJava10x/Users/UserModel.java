@@ -1,17 +1,28 @@
-package dev.matheus.CadastroAPIJava10x;
+package dev.matheus.CadastroAPIJava10x.Users;
 
+import dev.matheus.CadastroAPIJava10x.Tasks.TasksModel;
 import jakarta.persistence.*;
 
-@Entity  //@Entity transforms a class into a DB entity
+import java.util.List;
+
+@Entity // Transforms a class into a DB entity
 @Table(name = "tb_cadastro")
 public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
+
     private String mail;
+
     private int age;
+
+    @ManyToOne // A user can only have one task at a time
+    @JoinColumn(name = "tasks_id") // Foreing Key
+    private TasksModel tasks;
+    //  private List<TasksModel> tasks;
 
     public UserModel() {
     }
