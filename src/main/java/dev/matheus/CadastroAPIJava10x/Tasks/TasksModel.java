@@ -2,11 +2,17 @@ package dev.matheus.CadastroAPIJava10x.Tasks;
 
 import dev.matheus.CadastroAPIJava10x.Users.UserModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table (name = "tb_tasks")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TasksModel {
 
     @Id
@@ -17,8 +23,6 @@ public class TasksModel {
 
     @OneToMany(mappedBy = "tasks")// A task can have many users
     private List<UserModel> user;
-
-    //private UserModel user;
 
 
 }
