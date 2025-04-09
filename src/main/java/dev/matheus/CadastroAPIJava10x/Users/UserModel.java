@@ -19,6 +19,7 @@ public class UserModel {
 
     private String name;
 
+    @Column(unique = true)
     private String mail;
 
     private int age;
