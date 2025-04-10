@@ -17,12 +17,13 @@ public class TasksModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     private String taskName;
+
     private String difficulty;
 
     @OneToMany(mappedBy = "tasks")// A task can have many users
     private List<UserModel> user;
-
 
 }
