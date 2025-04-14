@@ -3,7 +3,7 @@ package dev.matheus.CadastroAPIJava10x.Users;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/users")
 public class UserController {
 
     @GetMapping("/boasvindas")
@@ -21,7 +21,7 @@ public class UserController {
         return "User";
     }
     // Show all users (READ)
-    @GetMapping("/showAll")
+    @GetMapping("/show")
     public String showAllUsers() {
         return "All users";
     }
