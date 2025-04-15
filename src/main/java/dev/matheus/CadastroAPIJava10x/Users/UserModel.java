@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity // Transforms a class into a DB entity
+@Entity
 @Table(name = "tb_register")
 @Data
 @NoArgsConstructor
@@ -30,7 +30,10 @@ public class UserModel {
     @Column(name = "function")
     private String function;
 
-    @ManyToOne // A user can only have one task at a time
+    @Column(name = "role")
+    private String role;
+
+    @ManyToOne
     @JoinColumn(name = "tasks_id") // Foreing Key
     private TasksModel tasks;
 
