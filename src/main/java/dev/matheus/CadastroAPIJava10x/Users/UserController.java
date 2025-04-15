@@ -12,10 +12,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping("/boasvindas")
-    public  String boasVindas() {
-        return "Essa é minha primeira mensagem nessa rota";
-    }
+
     // ADD user (CREATE)
     @PostMapping("/create")
     public UserDTO createUser(@RequestBody UserDTO user) {

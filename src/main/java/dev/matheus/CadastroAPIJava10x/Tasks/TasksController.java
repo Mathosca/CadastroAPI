@@ -1,38 +1,45 @@
 package dev.matheus.CadastroAPIJava10x.Tasks;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tasks")
 public class TasksController {
 
-    // Show Tasks
-    @GetMapping("/show")
-    public String showTasks() {
-        return "All Tasks";
-    }
-
-    // Show Tasks by ID
-    @GetMapping("/showID")
-    public String showTasksByID() {
-        return "Tasks";
+    private TasksService tasksService;
+    public TasksController(TasksService tasksService) {
+        this.tasksService = tasksService;
     }
 
     // Create Tasks
     @PostMapping("/create")
-    public String creatTask() {
-        return "task created";
+    public TasksDTO createTask(@RequestBody TasksDTO task) {
+        return tasksService.createTask(task);
+    }
+
+    // Show Tasks by ID
+    @GetMapping("/show/{id}")
+    public TasksDTO showTasksByID(@PathVariable Long id) {
+        return tasksService.showTaskByID(id);
+    }
+
+    // Show Tasks
+    @GetMapping("/show")
+    public List<TasksDTO> showAllTasks() {
+        return tasksService.showAllTasks();
     }
 
     // Alter Tasks
-    @PutMapping("/changeID")
-    public String changeTask() {
-        return "Change Task";
+    @PutMapping("/change/{id}")
+    public TasksDTO changeTask(@PathVariable Long id, @RequestBody TasksDTO userChanged) {
+        return tasksService.changeTaskById(id,userChanged);
     }
 
     // Delete Tasks
-    @DeleteMapping("/deleteID")
-    public String deleteTask() {
-        return "User deleted";
+    @DeleteMapping("/delete/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        tasksService.deleteTaskByID(id);
     }
 
 
