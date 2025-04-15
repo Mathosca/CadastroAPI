@@ -8,9 +8,11 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
+    private UserMapper userMapper;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     // Show all users
@@ -24,8 +26,10 @@ public class UserService {
     }
 
     // Create new user
-    public UserModel createUser(UserModel user) {
-        return userRepository.save(user);
+    public UserDTO createUser(UserDTO userDTO) {
+        UserModel user = userMapper.map(userDTO);
+        user = userRepository.save(user);
+        return userMapper.map(user);
     }
 
     // Delete user by ID - need to be a void method
