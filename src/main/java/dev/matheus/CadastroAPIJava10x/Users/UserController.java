@@ -22,9 +22,9 @@ public class UserController {
         return "User created";
     }
     // Show users by ID (READ)
-    @GetMapping("/showID")
-    public String showUsersByID() {
-        return "User";
+    @GetMapping("/show/{id}")
+    public UserModel showUsersByID(@PathVariable Long id) {
+        return userService.showUsersById(id);
     }
     // Show all users (READ)
     @GetMapping("/show")
