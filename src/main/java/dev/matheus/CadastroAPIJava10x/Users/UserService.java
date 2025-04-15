@@ -32,4 +32,13 @@ public class UserService {
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
+
+    // Update user
+    public UserModel changeUsersByID(Long id, UserModel userChanged) {
+        if(userRepository.existsById(id)) {
+            userChanged.setId(id);
+            return userRepository.save(userChanged);
+        }
+        return null;
+    }
 }

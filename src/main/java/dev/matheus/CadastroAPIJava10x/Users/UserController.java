@@ -32,9 +32,9 @@ public class UserController {
         return userService.showAllUsers();
     }
     // Change user data (UPDATE)
-    @PutMapping("/changeID")
-    public String changeUsersByID() {
-        return "Change users";
+    @PutMapping("/change/{id}")
+    public UserModel changeUsersByID(@PathVariable Long id, @RequestBody UserModel userChanged) {
+        return userService.changeUsersByID(id, userChanged);
     }
     // Delete user (DELETE)
     @DeleteMapping("/delete/{id}")
