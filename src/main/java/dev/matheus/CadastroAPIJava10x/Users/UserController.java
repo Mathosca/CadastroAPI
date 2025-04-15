@@ -18,8 +18,8 @@ public class UserController {
     }
     // ADD user (CREATE)
     @PostMapping("/create")
-    public String createUser() {
-        return "User created";
+    public UserModel createUser(@RequestBody UserModel user) {
+        return userService.createUser(user);
     }
     // Show users by ID (READ)
     @GetMapping("/show/{id}")

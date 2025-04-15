@@ -23,4 +23,8 @@ public class UserService {
         return userById.orElse(null);
     }
 
+    // Create new user
+    public UserModel createUser(UserModel user) {
+        return userRepository.save(user);
+    }
 }
