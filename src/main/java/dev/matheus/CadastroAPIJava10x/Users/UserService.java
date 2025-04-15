@@ -3,6 +3,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -16,13 +17,16 @@ public class UserService {
     }
 
     // Show all users
-    public List<UserModel> showAllUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> showAllUsers() {
+        List<UserModel> users = userRepository.findAll();
+        return users.stream()
+                .map(userMapper::map)
+                .collect(Collectors.toList());
     }
     // Show by ID
-    public UserModel showUsersById(Long id) {
+    public UserDTO showUsersById(Long id) {
         Optional<UserModel> userById = userRepository.findById(id);
-        return userById.orElse(null);
+        return userById.map(userMapper::map).orElse(null);
     }
 
     // Create new user
@@ -38,10 +42,13 @@ public class UserService {
     }
 
     // Update user
-    public UserModel changeUsersByID(Long id, UserModel userChanged) {
-        if(userRepository.existsById(id)) {
+    public UserDTO changeUsersByID(Long id, UserDTO userDTO) {
+        Optional<UserModel> existingUser = userRepository.findById(id);
+        if (existingUser.isPresent()) {
+            UserModel userChanged = userMapper.map(userDTO);
             userChanged.setId(id);
-            return userRepository.save(userChanged);
+            UserModel savedUser = userRepository.save(userChanged);
+            return userMapper.map(savedUser);
         }
         return null;
     }

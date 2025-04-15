@@ -23,17 +23,17 @@ public class UserController {
     }
     // Show users by ID (READ)
     @GetMapping("/show/{id}")
-    public UserModel showUsersByID(@PathVariable Long id) {
+    public UserDTO showUsersByID(@PathVariable Long id) {
         return userService.showUsersById(id);
     }
     // Show all users (READ)
     @GetMapping("/show")
-    public List<UserModel> showAllUsers() {
+    public List<UserDTO> showAllUsers() {
         return userService.showAllUsers();
     }
     // Change user data (UPDATE)
     @PutMapping("/change/{id}")
-    public UserModel changeUsersByID(@PathVariable Long id, @RequestBody UserModel userChanged) {
+    public UserDTO changeUsersByID(@PathVariable Long id, @RequestBody UserDTO userChanged) {
         return userService.changeUsersByID(id, userChanged);
     }
     // Delete user (DELETE)
