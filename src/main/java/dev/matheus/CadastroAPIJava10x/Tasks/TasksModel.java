@@ -1,5 +1,6 @@
 package dev.matheus.CadastroAPIJava10x.Tasks;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.matheus.CadastroAPIJava10x.Users.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class TasksModel {
     private String difficulty;
 
     @OneToMany(mappedBy = "tasks")// A task can have many users
+    @JsonIgnore
     private List<UserModel> user;
 
 }
